@@ -212,6 +212,53 @@
   transform: translateY(-4px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
+    .categories {
+  padding: 40px 16px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.categories h2 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.category-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.category-card .icon {
+  display: block;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.category-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+}
+
+/* Tablet & desktop */
+@media (min-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
   </style>
 </head>
 
@@ -272,6 +319,41 @@
   </a>
 
   </div>
+  <section class="categories">
+  <h2>Popular Categories</h2>
+
+  <div class="category-grid">
+    <a href="#" class="category-card">
+      <span class="icon">📱</span>
+      <span>Smartphones</span>
+    </a>
+
+    <a href="#" class="category-card">
+      <span class="icon">💻</span>
+      <span>Laptops</span>
+    </a>
+
+    <a href="#" class="category-card">
+      <span class="icon">🎧</span>
+      <span>Headphones</span>
+    </a>
+
+    <a href="#" class="category-card">
+      <span class="icon">🏠</span>
+      <span>Home & Living</span>
+    </a>
+
+    <a href="#" class="category-card">
+      <span class="icon">🛠️</span>
+      <span>Tools</span>
+    </a>
+
+    <a href="#" class="category-card">
+      <span class="icon">📷</span>
+      <span>Cameras</span>
+    </a>
+  </div>
+  </section>
   <footer>
   © 2026 ChoiceMentor · Honest recommendations
 </footer>
