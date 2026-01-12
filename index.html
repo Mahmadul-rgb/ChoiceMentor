@@ -111,6 +111,17 @@
     display: block;  /* show ☰ on mobile */
   }
 }
+    /* FORCE proper mobile header alignment */
+.site-header .header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Ensure menu icon sticks to right */
+.menu-toggle {
+  margin-left: auto;
+}
   </style>
 </head>
 
