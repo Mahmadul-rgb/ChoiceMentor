@@ -125,6 +125,33 @@
 .menu-toggle {
   margin-left: auto;
 }
+    /* ===== MOBILE MENU DROPDOWN ===== */
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+.nav-mobile a {
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #111;
+  font-size: 15px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+/* Show mobile menu when active */
+.nav-mobile.active {
+  display: flex;
+}
+
+/* Desktop: hide mobile menu */
+@media (min-width: 769px) {
+  .nav-mobile {
+    display: none !important;
+  }
+}
   </style>
 </head>
 
@@ -148,6 +175,14 @@
     <div class="menu-toggle">&#9776;</div>
 
   </div>
+  <!-- MOBILE MENU -->
+<nav class="nav-mobile">
+  <a href="#">Home</a>
+  <a href="#">Reviews</a>
+  <a href="#">Guides</a>
+  <a href="#">About</a>
+</nav>
+  
 </header>
 
 <section class="hero">
@@ -161,6 +196,14 @@
 <footer>
   © 2026 ChoiceMentor · Honest recommendations
 </footer>
+  <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.querySelector('.nav-mobile');
 
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+  });
+  </script>
+  
 </body>
 </html>
