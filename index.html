@@ -62,6 +62,55 @@
       font-size: 13px;
       color: #666;
     }
+    /* ===== HEADER BASE ===== */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ===== DESKTOP NAV ===== */
+.nav-desktop {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-desktop a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+}
+
+/* ===== MOBILE MENU ICON ===== */
+.menu-toggle {
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+/* ===== MOBILE RULES ===== */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;   /* hide links on mobile */
+  }
+
+  .menu-toggle {
+    display: block;  /* show ☰ on mobile */
+  }
+}
   </style>
 </head>
 
