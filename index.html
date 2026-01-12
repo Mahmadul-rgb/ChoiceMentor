@@ -187,8 +187,20 @@
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileMenu = document.querySelector('.nav-mobile');
 
-  menuToggle.addEventListener('click', () => {
+  // Toggle menu when ☰ is clicked
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // stop bubbling
     mobileMenu.classList.toggle('active');
+  });
+
+  // Clicking inside menu should NOT close it
+  mobileMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+
+  // Clicking anywhere else closes the menu
+  document.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
   });
   </script>
   
