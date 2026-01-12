@@ -16,16 +16,19 @@
       background: #f8f9fb;
       color: #222;
     }
+    .site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
 
-    header {
-      background: #ffffff;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  max-width: 1100px;
+  margin: auto;
+}
     .brand {
       font-size: 20px;
       font-weight: bold;
@@ -130,6 +133,7 @@
 <header class="site-header">
   <div class="header-inner">
 
+    <!-- LOGO -->
     <div class="logo">ChoiceMentor</div>
 
     <!-- DESKTOP NAV -->
@@ -140,7 +144,7 @@
       <a href="#">About</a>
     </nav>
 
-    <!-- MOBILE ICON -->
+    <!-- MOBILE MENU ICON -->
     <div class="menu-toggle">&#9776;</div>
 
   </div>
