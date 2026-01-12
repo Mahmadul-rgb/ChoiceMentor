@@ -179,6 +179,39 @@
   font-weight: 500;
   text-align: center;
 }
+    .guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.guide-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #111;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guide-card h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.guide-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
   </style>
 </head>
 
@@ -221,17 +254,25 @@
     in the USA and India — without confusion.
   </p>
 </section>
-  <section class="featured-guides">
-  <h2>Featured Buying Guides</h2>
+  <div class="guides-grid">
 
-  <div class="guides-list">
-    <a href="#">Best Smartphones Under $500</a>
-    <a href="#">Best Laptops for Students</a>
-    <a href="#">Best Headphones for Work</a>
+  <a class="guide-card" href="#">
+    <h3>Best Smartphones Under $500</h3>
+    <p>Top picks with best value for money.</p>
+  </a>
+
+  <a class="guide-card" href="#">
+    <h3>Best Laptops for Students</h3>
+    <p>Reliable, affordable laptops for study.</p>
+  </a>
+
+  <a class="guide-card" href="#">
+    <h3>Best Headphones for Work</h3>
+    <p>Comfortable & clear for long hours.</p>
+  </a>
+
   </div>
-  </section>
-
-<footer>
+  <footer>
   © 2026 ChoiceMentor · Honest recommendations
 </footer>
   <script>
