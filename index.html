@@ -141,9 +141,10 @@
 }
 
 .logo-img {
-  height: 52px;     /* ideal for mobile header */
+  height: 52px;          /* keep this */
   width: auto;
-  display: block;  /* removes inline gap */
+  display: block;
+  margin-left: -6px;     /* 👈 KEY FIX */
 }
     @media (max-width: 768px) {
   .header-inner {
