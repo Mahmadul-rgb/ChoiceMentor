@@ -390,6 +390,48 @@
   margin: 50px auto;
   max-width: 900px;
     }
+    .hero {
+  background: linear-gradient(135deg, #0f2a44, #1e4fd8);
+  color: #ffffff;
+  padding: 90px 20px 80px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 36px;
+  max-width: 800px;
+  margin: 0 auto 14px;
+}
+
+.hero p {
+  font-size: 17px;
+  max-width: 700px;
+  margin: 0 auto 26px;
+  color: rgba(255,255,255,0.9);
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 14px 26px;
+  background: #f59e0b;
+  color: #111;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+}
   </style>
 </head>
 
@@ -426,14 +468,14 @@
 </header>
 
 <section class="hero">
-  <h1>Make Smarter Buying Decisions</h1>
+  <h1>Find the Best Products Without Guesswork</h1>
 
   <p>
-    Honest reviews, comparisons, and buying guides to help you choose the best
-    products in the USA — without confusion.
+    Honest reviews and buying guides to help you choose the right products
+    — based on real value, not hype.
   </p>
 
-  <a href="#guides" class="hero-cta">Explore Top Guides</a>
+  <a href="#guides" class="hero-cta">Explore Top Buying Guides</a>
 </section>
   <div class="section-divider"></div>
     <section class="categories">
