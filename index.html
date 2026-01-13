@@ -259,6 +259,56 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+    .trust-section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.trust-section h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.trust-points {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  font-size: 15px;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .trust-points {
+    grid-template-columns: 1fr;
+  }
+}
+    .trust-section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.trust-section h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.trust-points {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  font-size: 15px;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .trust-points {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 
@@ -301,22 +351,24 @@
     in the USA and India — without confusion.
   </p>
 </section>
-  <div class="guides-grid">
+ <div class="guides-grid">
 
-  <a class="guide-card" href="#">
-    <h3>Best Smartphones Under $500</h3>
-    <p>Top picks with best value for money.</p>
+  <a href="#" class="guide-card">
+    <strong>Best Smartphones Under $500</strong>
+    <span>Top picks with best value for money.</span>
   </a>
 
-  <a class="guide-card" href="#">
-    <h3>Best Laptops for Students</h3>
-    <p>Reliable, affordable laptops for study.</p>
+  <a href="#" class="guide-card">
+    <strong>Best Laptops for Students</strong>
+    <span>Reliable, affordable laptops for study.</span>
   </a>
 
-  <a class="guide-card" href="#">
-    <h3>Best Headphones for Work</h3>
-    <p>Comfortable & clear for long hours.</p>
+  <a href="#" class="guide-card">
+    <strong>Best Headphones for Work</strong>
+    <span>Comfortable & clear for long hours.</span>
   </a>
+
+</div>
 
   </div>
   <section class="categories">
@@ -354,6 +406,16 @@
     </a>
   </div>
   </section>
+  <section class="trust-section">
+  <h2>Why Trust ChoiceMentor?</h2>
+
+  <div class="trust-points">
+    <div>✔ Honest & unbiased reviews</div>
+    <div>✔ Research-backed comparisons</div>
+    <div>✔ Updated recommendations</div>
+    <div>✔ USA & India focused guides</div>
+  </div>
+</section>
   <footer>
   © 2026 ChoiceMentor · Honest recommendations
 </footer>
