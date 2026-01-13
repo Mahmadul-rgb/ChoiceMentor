@@ -323,6 +323,39 @@
 .start-btn:hover {
   background: #1e4fd8;
 }
+    .hero {
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 34px;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #555;
+  max-width: 640px;
+  margin: 0 auto 26px;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.hero-cta:hover {
+  background: #1e4fd8;
+}
    
   </style>
 </head>
@@ -361,10 +394,13 @@
 
 <section class="hero">
   <h1>Make Smarter Buying Decisions</h1>
+
   <p>
-    Honest reviews, comparisons, and buying guides to help you choose the best products
-    in the USA and India — without confusion.
+    Honest reviews, comparisons, and buying guides to help you choose the best
+    products in the USA — without confusion.
   </p>
+
+  <a href="#guides" class="hero-cta">Explore Top Guides</a>
 </section>
     <section class="categories">
   <h2>Popular Categories</h2>
@@ -401,7 +437,7 @@
     </a>
   </div>
     </section>
-<div class="guides-grid">
+<div class="guides-grid" id="guides">
 
   <a class="guide-card" href="#">
     <h3>Best Smartphones Under $500</h3>
