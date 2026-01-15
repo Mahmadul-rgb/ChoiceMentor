@@ -178,6 +178,17 @@
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+    .guide-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+    .guide-card {
+  display: flex;
+  flex-direction: column;
+}
 
 .guide-card h3 {
   margin: 0 0 6px;
@@ -539,11 +550,13 @@
 <div class="guides-grid">
 
   <a class="guide-card" href="best-smartphones-under-500.html">
-    <span class="guide-badge">Buying Guide</span>
-    <h3>Best Smartphones Under $500</h3>
-    <p>Top picks with best value for money.</p>
-    <span class="guide-cta">Read guide →</span>
-  </a>
+  <img src="images/smartphones.jpg" alt="Best Smartphones Under $500" class="guide-img">
+
+  <span class="guide-badge">Buying Guide</span>
+  <h3>Best Smartphones Under $500</h3>
+  <p>Top picks with best value for money.</p>
+  <span class="guide-cta">Read guide →</span>
+</a>
 
   <a class="guide-card" href="best-laptops-for-students.html">
     <span class="guide-badge">Buying Guide</span>
