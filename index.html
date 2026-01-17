@@ -562,6 +562,32 @@
     margin-top: -24px;
   }
 }
+    /* Default hero (desktop ok) */
+.hero {
+  padding: 96px 20px;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 16px 40px;
+    min-height: unset; /* IMPORTANT */
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .hero p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .hero .hero-cta {
+    margin-bottom: 16px;
+  }
+}
   </style>
 </head>
 
