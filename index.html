@@ -349,30 +349,6 @@
   background: #1e4fd8;
 }
 
-.hero h1 {
-  font-size: 34px;
-  margin-bottom: 14px;
-}
-
-.hero p {
-  font-size: 16px;
-  color: #555;
-  max-width: 640px;
-  margin: 0 auto 26px;
-  line-height: 1.6;
-}
-
-.hero-cta {
-  display: inline-block;
-  padding: 12px 22px;
-  background: #2563eb;
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: background 0.2s ease;
-}
 
 .hero-cta:hover {
   background: #1e4fd8;
@@ -412,12 +388,7 @@
   margin: 50px auto;
   max-width: 900px;
     }
-    .hero {
-  background: linear-gradient(135deg, #0f2a44, #1e4fd8);
-  color: #ffffff;
-  padding: 90px 20px 80px;
-  text-align: center;
-}
+ 
 
 .hero h1 {
   font-size: 36px;
@@ -543,26 +514,13 @@
     padding: 18px;
   }
 }
-    .hero {
-  padding-top: 72px;
-  padding-bottom: 72px;
-}
-    @media (min-width: 1024px) {
-  .hero {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
-}
+   
     @media (min-width: 1024px) {
   .categories {
     margin-top: -24px;
   }
 }
-    /* Default hero (desktop ok) */
-.hero {
-  padding: 96px 20px;
-}
-
+ 
 /* Mobile fix */
 @media (max-width: 768px) {
   .hero {
@@ -584,11 +542,54 @@
     margin-bottom: 16px;
   }
 }
-    @media (max-width: 768px) {
+    /* ===== HERO (FINAL, SINGLE SOURCE OF TRUTH) ===== */
+.hero {
+  background: linear-gradient(135deg, #0f2a44, #1e4fd8);
+  color: #ffffff;
+  text-align: center;
+  padding: 72px 20px 60px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  max-width: 800px;
+  margin: 0 auto 14px;
+}
+
+.hero p {
+  font-size: 17px;
+  max-width: 700px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 14px 26px;
+  background: #f59e0b;
+  color: #111;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* ===== MOBILE HERO ===== */
+@media (max-width: 768px) {
   .hero {
-    padding-bottom: 56px; /* instead of 40px */
+    padding: 44px 16px 36px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 15px;
+    margin-bottom: 18px;
   }
 }
+   
   </style>
 </head>
 
