@@ -574,8 +574,19 @@
   border-radius: 16px;   /* keep */
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
-    
-   
+    /* ===== DESKTOP HEADER MENU – PRO POLISH ===== */
+.nav-desktop a {
+  position: relative;
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1;
+  color: #111;
+  transition: color 0.15s ease;
+}
+
+.nav-desktop a:hover {
+  color: #2563eb;
+}
   </style>
 </head>
 
@@ -590,11 +601,11 @@
     </div>
 
     <nav class="nav-desktop">
-  <a href="#">Home</a>
+  <a href="#" class="active">Home</a>
   <a href="#">Reviews</a>
   <a href="#">Guides</a>
   <a href="#">About</a>
-    </nav>
+</nav>
 
     <!-- MOBILE MENU ICON -->
     <div class="menu-toggle">&#9776;</div>
