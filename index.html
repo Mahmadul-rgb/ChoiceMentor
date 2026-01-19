@@ -1,984 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>ChoiceMentor – Smart Buying Guides</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ChoiceMentor helps you choose the best products with honest reviews and buying guides for USA and India.">
-
-  <!-- Favicon (we’ll add the file next) -->
-  <link rel="icon" href="favicon.ico">
+  <meta name="description"
+    content="ChoiceMentor - Honest reviews and buying guides for Tech, Software, and Home Living.">
+  <title>ChoiceMentor | Smart Buying Guides</title>
 
   <style>
-    body {
+    /* =========================================
+           1. RESET & VARIABLES
+           ========================================= */
+    :root {
+      /* Palette: Professional, Trustworthy Blue & Warm Accent */
+      --primary-dark: #0f172a;
+      /* Slate 900 */
+      --primary-blue: #1e40af;
+      /* Blue 800 */
+      --accent-color: #f59e0b;
+      /* Amber 500 (Warmth) */
+      --accent-hover: #d97706;
+      --text-main: #334155;
+      /* Slate 700 */
+      --text-light: #64748b;
+      /* Slate 500 */
+      --bg-light: #f8fafc;
+      /* Very light gray/blue */
+      --white: #ffffff;
+
+      /* Spacing & Layout */
+      --header-height: 60px;
+      --container-width: 1200px;
+      --radius: 8px;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8f9fb;
-      color: #222;
+      padding: 0;
     }
 
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      text-align: center;
-      font-size: 13px;
-      color: #666;
-    }
-    /* ===== HEADER BASE ===== */
-.site-header {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  position: relative;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 16px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-
-/* ===== DESKTOP NAV ===== */
-.nav-desktop {
-  display: flex;
-  gap: 26px;
-}
-
-.nav-desktop a {
-  text-decoration: none;
-  color: #111;
-  font-weight: 500;
-}
-
-/* ===== MOBILE MENU ICON ===== */
-.menu-toggle {
-  font-size: 22px;
-  cursor: pointer;
-  display: none;
-}
-
-/* ===== MOBILE RULES ===== */
-@media (max-width: 768px) {
-  .nav-desktop {
-    display: none;   /* hide links on mobile */
-  }
-
-  .menu-toggle {
-    display: block;  /* show ☰ on mobile */
-  }
-}
-    /* FORCE proper mobile header alignment */
-.site-header .header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Ensure menu icon sticks to right */
-.menu-toggle {
-  margin-left: auto;
-}
-    /* ===== MOBILE MENU DROPDOWN ===== */
-.nav-mobile {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-
-  display: none;
-  flex-direction: column;
-
-  background: #ffffff;
-  border-bottom: 1px solid #eee;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-
-  z-index: 1000;
-}
-    .nav-mobile {
-  transform: translateY(-8px);
-  opacity: 0;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.nav-mobile a {
-  padding: 14px 16px;
-  text-decoration: none;
-  color: #111;
-  font-size: 15px;
-   border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-    .nav-mobile a:active {
-  background: #f1f5f9;
-}
-
-.nav-mobile.active {
-  display: flex;
-  opacity: 1;
-  transform: translateY(0);
-  animation: slideDown 0.25s ease;
-}
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Desktop: hide mobile menu */
-@media (min-width: 769px) {
-  .nav-mobile {
-    display: none !important;
-  }
-}
-    .logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  height: 36px;         
-  width: auto;
-  display: block;
-  margin-left: -6px;    
-}
-    @media (max-width: 768px) {
-  .header-inner {
-    max-width: 100%;
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-    }
-    .featured-guides {
-  padding: 32px 20px;
-  max-width: 1100px;
-  margin: auto;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-main);
+      line-height: 1.6;
+      background-color: var(--white);
+      -webkit-font-smoothing: antialiased;
     }
 
-.featured-guides h2 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.guides-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 400px;
-  margin: auto;
-}
-
-.guides-list a {
-  text-decoration: none;
-  color: #2563eb;
-  font-weight: 500;
-  text-align: center;
-}
-    .guides-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  max-width: 900px;
-  margin: 0 auto 20px;
-}
-
-.guide-card {
-  background: #ffffff;
-  padding: 18px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #111;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-    .guide-img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-    .guide-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.guide-card h3 {
-  margin: 0 0 6px;
-  font-size: 17px;
-}
-
-.guide-card p {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
-}
-
-.guide-card {
-  position: relative;
-}
-
-.guide-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-}
-
-.guide-card:hover .guide-cta {
-  text-decoration: underline;
-}
-    
-
-
-    @media (max-width: 600px) {
-  .categories h2 {
-    margin-bottom: 12px;
-  }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease;
     }
 
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
- .category-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 26px 16px;
-  min-height: 120px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  text-decoration: none;
-  color: #111;
-  font-weight: 500;
-
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-    .category-card img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  margin-bottom: 10px;
+    ul {
+      list-style: none;
     }
 
-.category-card .icon {
-  display: block;
-  font-size: 26px;
-  margin-bottom: 6px;
-}
-    .category-card img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  margin-bottom: 10px;
-}
-
-.category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
-}
-
-/* Tablet & desktop */
-@media (min-width: 768px) {
-  .category-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-    .trust-section {
-  padding: 40px 20px;
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-}
-
-.trust-section h2 {
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.trust-points {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  font-size: 15px;
-  color: #333;
-}
-
-@media (max-width: 600px) {
-  .trust-points {
-    grid-template-columns: 1fr;
-  }
-}
-    .guide-cta {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #2563eb;
-  font-weight: 600;
-}
-    .start-guide {
-  padding: 50px 20px;
-  text-align: center;
-  background: #ffffff;
-  margin-top: 40px;
-}
-
-.start-guide h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.start-guide p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.start-btn {
-  display: inline-block;
-  padding: 12px 22px;
-  background: #2563eb;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background 0.2s ease;
-}
-
-.start-btn:hover {
-  background: #1e4fd8;
-}
-
-
-
-   
-    .guide-card {
-  position: relative;
-}
-
-.guide-card::after {
-  content: "→";
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 16px;
-  color: #c7d2fe;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.guide-card:hover::after {
-  transform: translateX(4px);
-  color: #2563eb;
-}
-    /* Mobile tap feedback */
-.guide-card:active {
-  transform: scale(0.98);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
-    .section-divider {
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(0,0,0,0.08),
-    transparent
-  );
-  margin: 50px auto;
-  max-width: 900px;
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
     }
 
-
-
-/* Mobile */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 30px;
-  }
-}
-    .categories {
-      padding: 16px 16px 36px;
-      max-width: 1100px;
+    /* Utility */
+    .container {
+      max-width: var(--container-width);
       margin: 0 auto;
+      padding: 0 20px;
     }
 
-.categories h2 {
-  text-align: center;
-  font-size: 26px;
-  margin-bottom: 24px;
-}
-
-.category-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-
-
-
-.category-banner img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-
-.category-text {
-  padding: 16px 18px;
-}
-
-
-    @media (max-width: 768px) {
-  .category-grid-3 {
-    grid-template-columns: 1fr;
-  }
-
-  .category-banner img {
-    height: 200px;
-  }
-}
-
-#guides {
-  padding-top: 48px;
-}
-    .category-banner {
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid #eaeaea;
-}
-    .category-text h3 {
-  font-size: 15.5px;
-  font-weight: 600;
-  color: #0f172a;
-  letter-spacing: 0.2px;
-}
-    @media (hover: hover) {
-  .category-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-  }
-}
-    @media (max-width: 768px) {
-  .category-text {
-    padding: 18px;
-  }
-}
-    /* ===== HERO (FINAL, SINGLE SOURCE OF TRUTH) ===== */
-.hero {
-  background: linear-gradient(135deg, #0f2a44, #1e4fd8);
-  color: #ffffff;
-  text-align: center;
-  padding: 52px 18px 44px;
-}
-
-.hero h1 {
-  font-size: 36px;
-  max-width: 800px;
-  margin: 0 auto 14px;
-}
-
-.hero p {
-  font-size: 17px;
-  max-width: 700px;
-  margin: 0 auto 24px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.9);
-}
-
-.hero-cta {
-  display: inline-block;
-  padding: 14px 26px;
-  background: #f59e0b;
-  color: #111;
-  font-weight: 700;
-  border-radius: 10px;
-  text-decoration: none;
-}
-
-/* ===== MOBILE HERO ===== */
-@media (max-width: 768px) {
-  .hero {
-    padding: 44px 16px 32px;
-  }
-
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .hero p {
-    font-size: 15px;
-    margin-bottom: 18px;
-  }
-}
-    /* ===== DESKTOP HEADER POLISH ===== */
-.nav-desktop a {
-  position: relative;
-  padding: 6px 2px;
-  font-size: 14px;
-}
-
-.nav-desktop a:hover {
-  color: #2563eb;
-}
-
-.nav-desktop a.active {
-  color: #2563eb;
-  font-weight: 600;
-}
-
-.nav-desktop a.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 2px;
-  background: #2563eb;
-  border-radius: 2px;
-}
-    /* ===== FOOTER MOBILE POLISH (PRO) ===== */
-@media (max-width: 600px) {
-
-  footer p {
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
-  footer div a {
-    display: block;
-    margin: 10px 0;
-    font-size: 15px;
-  }
-
-  footer div {
-    padding-bottom: 8px;
-  }
-}
-    .category-banner img {
-  height: 160px;        
-  border-radius: 14px 14px 0 0;
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+      text-align: center;
     }
-    .category-text {
-  padding: 10px 16px 14px;
-  text-align: center;
-}
 
-.category-text h3 {
-  margin: 6px 0 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: #0f172a;
-}
-    .category-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.category-card:active {
-  transform: scale(0.985);
-}
-    .category-banner {
-  border-radius: 16px;   /* keep */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    /* ===== HEADER BASE ===== */
-.site-header {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-}
 
-.header-inner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    /* =========================================
+           2. HEADER (Slim, Sticky, Professional)
+           ========================================= */
+    header {
+      height: var(--header-height);
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+    }
 
-.logo-img {
-  height: 44px;
-}
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
 
-/* ===== DESKTOP NAV ===== */
-.nav-desktop {
-  display: flex;
-  gap: 22px;
-}
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.nav-desktop a {
-  text-decoration: none;
-  color: #111;
-  font-weight: 500;
-}
+    .logo span {
+      color: var(--primary-blue);
+    }
 
-/* ===== MOBILE ===== */
-.menu-toggle {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-}
+    /* Desktop Nav */
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
 
-.nav-mobile {
-  display: none;
-  flex-direction: column;
-  background: #fff;
-  border-top: 1px solid #eee;
-}
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
 
-.nav-mobile a {
-  padding: 14px 16px;
-  text-decoration: none;
-  color: #111;
-  border-bottom: 1px solid #f2f2f2;
-}
+    .nav-links a:hover {
+      color: var(--primary-blue);
+    }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .nav-desktop {
-    display: none;
-  }
+    /* Mobile Hamburger */
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
 
-  .menu-toggle {
-    display: block;
-  }
-}
-    .nav-mobile {
-  background: #ffffff;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
-}
-    .nav-mobile a {
-  font-size: 16px;
-  font-weight: 500;
-  padding: 16px 18px;
-}
+    .bar {
+      width: 24px;
+      height: 2px;
+      background-color: var(--primary-dark);
+      transition: 0.3s;
+    }
 
-.nav-mobile a:active {
-  background: #f1f5f9;
-}
-    
-.site-header {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-}
-    /* ===== STEP 2: DESKTOP NAV POLISH ===== */
-.nav-desktop a {
-  padding: 8px 10px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #0f172a;
-  border-radius: 6px;
-  transition: background 0.2s ease, color 0.2s ease;
-}
+    /* Mobile Menu */
+    .mobile-menu {
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      background: var(--white);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 1rem 0;
+      /* Hidden state */
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
 
-.nav-desktop a:hover {
-  background: #f1f5f9;
-  color: #2563eb;
-}
+    .mobile-menu.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
 
-/* Active link feel */
-.nav-desktop a.active {
-  background: #eaf0ff;
-  color: #2563eb;
-  font-weight: 600;
-}
-    /* ===== STEP 3: HEADER DEPTH & STABILITY ===== */
-.site-header {
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-}
+    .mobile-menu a {
+      display: block;
+      padding: 12px 20px;
+      font-weight: 600;
+      border-bottom: 1px solid #f1f5f9;
+    }
 
-.header-inner {
-  min-height: 64px;
-}
-    /* ===== STEP 4A: DESKTOP NAV WEIGHT ===== */
-.nav-desktop a {
-  padding: 8px 10px;
-  border-radius: 8px;
-}
+    /* =========================================
+           3. HERO SECTION
+           ========================================= */
+    .hero {
+      /* Professional Blue Gradient */
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+      color: var(--white);
+      padding: 5rem 1rem;
+      text-align: center;
+    }
 
-.nav-desktop a:hover {
-  background: #f1f5f9;
-}
-    /* ===== FIX: MOBILE MENU SEPARATOR ===== */
-.nav-mobile {
-  border-top: 1px solid #eee;
-}
-    /* ===== FIX: DESKTOP ACTIVE NAV (ANCHOR FEEL) ===== */
-.nav-desktop a.active {
-  background: #e8f0ff;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-weight: 600;
-}
-    /* ===== HEADER WIDTH FIX ===== */
-.site-header {
-  width: 100%;
-}
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
 
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-    /* ===== FIX HEADER HEIGHT (SLIM & PRO) ===== */
-.site-header {
-  height: auto;
-}
+    .hero p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-.header-inner {
-  padding: 8px 16px;   /* pehle ~16px+ tha */
-}
-   
-.nav-desktop a {
-  padding: 4px 0;
-  line-height: 1.2;
-}
-    /* FIX 4: MOBILE HEADER TIGHT */
-@media (max-width: 768px) {
-  .header-inner {
-    padding: 6px 12px;
-  }
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.2s, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    }
 
-  .menu-toggle {
-    font-size: 24px;
-  }
-}
-    /* FIX 5: FORCE HEADER HEIGHT SLIM */
-.site-header {
-  padding: 0 !important;
-}
+    .cta-button:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
 
-.header-inner {
-  min-height: 56px;
-  padding-top: 6px !important;
-  padding-bottom: 6px !important;
-}
-    /* FIX 6: LOGO SIZE CONTROL */
-.logo-img {
-  height: 36px !important;
-}
-    /* FIX 7: DESKTOP NAV ALIGN */
-.nav-desktop {
-  align-items: center;
-}
-  
+    /* =========================================
+           4. CARD GRIDS (Generic)
+           ========================================= */
+    .section-pad {
+      padding: 4rem 0;
+    }
+
+    .bg-gray {
+      background-color: var(--bg-light);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+
+    /* Card Styles */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background-color: #cbd5e1;
+      /* Placeholder fallback */
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-top: auto;
+    }
+
+    /* Category Specifics */
+    .category-card .card-title {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .category-card .card-img {
+      height: 160px;
+    }
+
+    /* =========================================
+           5. TRUST SECTION
+           ========================================= */
+    .trust-list {
+      list-style: none;
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid #e2e8f0;
+    }
+
+    .check-icon {
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    /* =========================================
+           6. FOOTER
+           ========================================= */
+    footer {
+      background: var(--primary-dark);
+      color: #94a3b8;
+      padding: 3rem 0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    footer p {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      margin: 0 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    /* =========================================
+           7. MEDIA QUERIES
+           ========================================= */
+    @media (min-width: 768px) {
+      .mobile-toggle {
+        display: none;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .trust-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-links {
+        display: none;
+      }
+
+      /* Hide Desktop Nav */
+      .mobile-toggle {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-<header class="site-header">
-  <div class="header-inner">
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Choice<span>Mentor</span>
+      </a>
 
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="logo.png" alt="ChoiceMentor" class="logo-img">
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Best Picks</a>
+        <a href="#">Comparisons</a>
+        <a href="#">How We Review</a>
+        <a href="#">About</a>
+      </nav>
+
+      <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
     </div>
+  </header>
 
-    <!-- DESKTOP NAV -->
-    <nav class="nav-desktop">
-      <a href="index.html">Home</a>
-      <a href="#best-picks">Best Picks</a>
-      <a href="#comparisons">Comparisons</a>
-      <a href="#how-we-review">How We Review</a>
-      <a href="#about">About</a>
-    </nav>
-
-    <!-- MOBILE ICON -->
-    <div class="menu-toggle" id="menuToggle">☰</div>
-
-  </div>
-
-  <!-- MOBILE MENU -->
-  <nav class="nav-mobile" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="#best-picks">Best Picks</a>
-    <a href="#comparisons">Comparisons</a>
-    <a href="#how-we-review">How We Review</a>
-    <a href="#about">About</a>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">Best Picks</a>
+    <a href="#">Comparisons</a>
+    <a href="#">How We Review</a>
+    <a href="#">About</a>
   </nav>
-</header>
 
-<section class="hero">
-  <h1>Find the Best Products Without Guesswork</h1>
-
-  <p>
-    Honest reviews and buying guides to help you choose the right products
-    — based on real value, not hype.
-  </p>
-
-  <a href="#guides" class="hero-cta">Explore Top Buying Guides</a>
-</section>
-  <div class="section-divider"></div>
-   <section class="categories">
-  <h2>Popular Categories</h2>
-
-  <div class="category-grid category-grid-3">
-
-    <a href="#" class="category-card category-banner">
-      <img src="tech-gadgets.webp" alt="Tech & Gadgets">
-      <div class="category-text">
-        <h3>Tech & Gadgets</h3>
-      </div>
-    </a>
-
-    <a href="#" class="category-card category-banner">
-      <img src="software-online-tools.webp" alt="Software & Online Tools">
-      <div class="category-text">
-        <h3>Software & Online Tools</h3>
-      </div>
-    </a>
-
-    <a href="#" class="category-card category-banner">
-      <img src="home-living.webp" alt="Home & Living">
-      <div class="category-text">
-        <h3>Home & Living</h3>
-      </div>
-    </a>
-
-  </div>
-</section>
-  <section id="guides" style="padding:24px 16px 12px;text-align:center;">
-  <h2 style="font-size:24px;margin-bottom:8px;">
-    Top Buying Guides
-  </h2>
-  <p style="font-size:15px;color:#555;max-width:600px;margin:0 auto 24px;">
-    Carefully researched guides to help you choose the best products
-    without wasting money.
-  </p>
-  </section>
-  
-<div class="guides-grid">
-
-  <a class="guide-card" href="best-smartphones-under-500.html">
-  <img src="smartphones-guide.webp" alt="Best Smartphones Under $500" class="guide-img">
-
-  
-  <h3>Best Smartphones Under $500</h3>
-  <p>Top picks with best value for money.</p>
-  <span class="guide-cta">Read guide →</span>
-</a>
-
-  <a class="guide-card" href="best-laptops-for-students.html">
-  <img src="laptops-guide.webp" alt="Best Laptops for Students" class="guide-img">
-
-  
-  <h3>Best Laptops for Students</h3>
-  <p>Reliable, affordable laptops for study.</p>
-  <span class="guide-cta">Read guide →</span>
-</a>
-  <a class="guide-card" href="best-headphones-for-work.html">
-  <img src="headphones-guide.webp" alt="Best Headphones for Work" class="guide-img">
-
-  
-  <h3>Best Headphones for Work</h3>
-  <p>Comfortable & clear for long hours.</p>
-  <span class="guide-cta">Read guide →</span>
-</a>
-
-</div>
-  
-  <section class="trust-section">
-  <h2>Why Millions Trust ChoiceMentor</h2>
-    <p style="font-size:14px;color:#555;margin-bottom:18px;">
-Independent buying guides based on research, real use cases, and buyer needs.
-    </p>
-
-  <div class="trust-points">
-    <div>✔ Honest & unbiased reviews</div>
-    <div>✔ Research-backed comparisons</div>
-    <div>✔ Updated recommendations</div>
-    <div>✔ Guides tailored for US buyers</div>
-  </div>
-</section>
-  
-  <section class="start-guide">
-  <h2>Not Sure Where to Start?</h2>
-  <p>Our most popular buying guide helps thousands of readers make smarter choices.</p>
-
-  <a href="#" class="start-btn">View Best Smartphones Under $500</a>
-  </section>
-  <footer style="background:#fff;border-top:1px solid #eee;margin-top:60px;">
-  <div style="max-width:1100px;margin:auto;padding:30px 20px;text-align:center;">
-
-    <p style="font-weight:600;font-size:16px;margin-bottom:8px;">
-      ChoiceMentor
-    </p>
-
-    <p style="font-size:14px;color:#555;max-width:700px;margin:0 auto 14px;">
-      ChoiceMentor provides independent buying guides and product recommendations
-      tailored for US shoppers. Our goal is to help you make smarter purchase decisions.
-    </p>
-
-    <p style="font-size:13px;color:#666;max-width:700px;margin:0 auto 14px;">
-      Disclosure: Some links on this site may be affiliate links.
-      This means we may earn a commission at no extra cost to you.
-    </p>
-
-    <div style="margin-bottom:14px;">
-      <a href="#" style="margin:0 10px;font-size:14px;color:#2563eb;text-decoration:none;">About</a>
-      <a href="#" style="margin:0 10px;font-size:14px;color:#2563eb;text-decoration:none;">Contact</a>
-      <a href="#" style="margin:0 10px;font-size:14px;color:#2563eb;text-decoration:none;">Disclaimer</a>
-      <a href="#" style="margin:0 10px;font-size:14px;color:#2563eb;text-decoration:none;">Privacy Policy</a>
+  <section class="hero">
+    <div class="container">
+      <h1>Find the Best Products<br>Without Guesswork</h1>
+      <p>Honest reviews and buying guides to help you choose the right products — based on real value, not hype.</p>
+      <a href="#guides" class="cta-button">Explore Top Buying Guides</a>
     </div>
+  </section>
 
-    <p style="font-size:13px;color:#888;">
-      © 2026 ChoiceMentor · USA-focused buying guides
-    </p>
+  <section class="section-pad bg-gray">
+    <div class="container">
+      <h2 class="section-title">Popular Categories</h2>
+      <p class="section-subtitle">Browse our most researched sectors to find exactly what you need.</p>
 
-  </div>
+      <div class="grid-3">
+        <div class="card category-card">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=500&q=80"
+            alt="Tech" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Tech & Gadgets</h3>
+          </div>
+        </div>
+        <div class="card category-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80"
+            alt="Software" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Software & Tools</h3>
+          </div>
+        </div>
+        <div class="card category-card">
+          <img src="https://images.unsplash.com/photo-1583847661884-3b66d123d9b4?auto=format&fit=crop&w=500&q=80"
+            alt="Home" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Home & Living</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="guides">
+    <div class="container">
+      <h2 class="section-title">Top Buying Guides</h2>
+      <p class="section-subtitle">Deep dives and expert analysis on this month's trending products.</p>
+
+      <div class="grid-3">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=500&q=80"
+            alt="Smart Watches" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">The Best Smartwatches for 2024</h3>
+            <p class="card-text">We tested 15 top models to find the best balance of battery life, fitness tracking, and
+              style.</p>
+            <a href="#" class="card-link">Read guide →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80"
+            alt="Project Management" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Top 5 Project Management Tools</h3>
+            <p class="card-text">Simplify your workflow. We compare Asana, Trello, and Monday.com for small businesses.
+            </p>
+            <a href="#" class="card-link">Read guide →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?auto=format&fit=crop&w=500&q=80"
+            alt="Home Office" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Building the Ultimate Home Office</h3>
+            <p class="card-text">From ergonomic chairs to standing desks, here is everything you need for a productive
+              setup.</p>
+            <a href="#" class="card-link">Read guide →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad bg-gray" id="trust">
+    <div class="container">
+      <h2 class="section-title">Why Millions Trust ChoiceMentor</h2>
+      <p class="section-subtitle">Our editorial standards ensure you get the truth, not marketing fluff.</p>
+
+      <div class="trust-list">
+        <div class="trust-item">
+          <span class="check-icon">✓</span>
+          <div><strong>Honest & Unbiased Reviews</strong><br><small class="text-light">We buy our own products to
+              test.</small></div>
+        </div>
+        <div class="trust-item">
+          <span class="check-icon">✓</span>
+          <div><strong>Research-Backed Comparisons</strong><br><small class="text-light">Data-driven analysis, not
+              opinions.</small></div>
+        </div>
+        <div class="trust-item">
+          <span class="check-icon">✓</span>
+          <div><strong>Updated Recommendations</strong><br><small class="text-light">We refresh guides monthly.</small>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="check-icon">✓</span>
+          <div><strong>Tailored for US Buyers</strong><br><small class="text-light">Availability and pricing for your
+              region.</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div style="font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 1rem;">ChoiceMentor</div>
+      <p>&copy; 2024 ChoiceMentor. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Affiliate Disclosure</a>
+      </div>
+    </div>
   </footer>
+
   <script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const mobileMenu = document.querySelector('.nav-mobile');
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('mobileToggle');
+      const menu = document.getElementById('mobileMenu');
 
-  // Toggle menu when ☰ is clicked
-  menuToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // stop bubbling
-    mobileMenu.classList.toggle('active');
-  });
+      toggle.addEventListener('click', () => {
+        // Toggle active class on menu
+        menu.classList.toggle('active');
 
-  // Clicking inside menu should NOT close it
-  mobileMenu.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
+        // Optional: Animate hamburger bars
+        const bars = toggle.querySelectorAll('.bar');
+        if (menu.classList.contains('active')) {
+          bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+          bars[1].style.opacity = '0';
+          bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+        } else {
+          bars[0].style.transform = 'none';
+          bars[1].style.opacity = '1';
+          bars[2].style.transform = 'none';
+        }
+      });
 
-  // Clicking anywhere else closes the menu
-  document.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-  });
-  </script>
-  <script>
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  menuToggle.addEventListener("click", () => {
-    mobileMenu.classList.toggle("active");
-  });
-
-  document.querySelectorAll(".nav-mobile a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("active");
+      // Close menu when clicking outside (UX best practice)
+      document.addEventListener('click', (e) => {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('active');
+          const bars = toggle.querySelectorAll('.bar');
+          bars[0].style.transform = 'none';
+          bars[1].style.opacity = '1';
+          bars[2].style.transform = 'none';
+        }
+      });
     });
-  });
-</script>
-  
+  </script>
 </body>
+
 </html>
