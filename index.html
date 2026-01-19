@@ -116,8 +116,19 @@
 
 .nav-mobile.active {
   display: flex;
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0);
+  animation: slideDown 0.25s ease;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 /* Desktop: hide mobile menu */
 @media (min-width: 769px) {
