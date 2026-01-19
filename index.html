@@ -142,7 +142,7 @@
 }
 
 .logo-img {
-  height: 44px;         
+  height: 36px;         
   width: auto;
   display: block;
   margin-left: -6px;    
@@ -736,6 +736,29 @@
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+    /* ===== FIX HEADER HEIGHT (SLIM & PRO) ===== */
+.site-header {
+  height: auto;
+}
+
+.header-inner {
+  padding: 8px 16px;   /* pehle ~16px+ tha */
+}
+   
+.nav-desktop a {
+  padding: 4px 0;
+  line-height: 1.2;
+}
+    /* FIX 4: MOBILE HEADER TIGHT */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: 6px 12px;
+  }
+
+  .menu-toggle {
+    font-size: 24px;
+  }
 }
   
   </style>
