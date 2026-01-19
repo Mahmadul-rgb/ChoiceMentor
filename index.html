@@ -574,6 +574,68 @@
   border-radius: 16px;   /* keep */
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
+    /* ===== HEADER BASE ===== */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-img {
+  height: 44px;
+}
+
+/* ===== DESKTOP NAV ===== */
+.nav-desktop {
+  display: flex;
+  gap: 22px;
+}
+
+.nav-desktop a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+}
+
+/* ===== MOBILE ===== */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.nav-mobile a {
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #111;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
   
   </style>
 </head>
@@ -583,13 +645,13 @@
 <header class="site-header">
   <div class="header-inner">
 
-    <!-- Logo -->
+    <!-- LOGO -->
     <div class="logo">
-      <img src="logo.png" alt="ChoiceMentor Logo">
+      <img src="logo.png" alt="ChoiceMentor" class="logo-img">
     </div>
 
-    <!-- Desktop Navigation -->
-    <nav class="nav-links">
+    <!-- DESKTOP NAV -->
+    <nav class="nav-desktop">
       <a href="index.html">Home</a>
       <a href="#best-picks">Best Picks</a>
       <a href="#comparisons">Comparisons</a>
@@ -597,21 +659,19 @@
       <a href="#about">About</a>
     </nav>
 
-    <!-- Mobile Menu Button -->
-    <div class="menu-toggle" id="menuToggle">
-      ☰
-    </div>
+    <!-- MOBILE ICON -->
+    <div class="menu-toggle" id="menuToggle">☰</div>
 
   </div>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
+  <!-- MOBILE MENU -->
+  <nav class="nav-mobile" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="#best-picks">Best Picks</a>
     <a href="#comparisons">Comparisons</a>
     <a href="#how-we-review">How We Review</a>
     <a href="#about">About</a>
-  </div>
+  </nav>
 </header>
 
 <section class="hero">
