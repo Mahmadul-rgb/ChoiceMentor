@@ -597,6 +597,67 @@
     align-items: center;
   }
 }
+    /* ===== HEADER BASE ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== LOGO ===== */
+.logo img {
+  height: 40px;     /* desktop perfect */
+  width: auto;
+  display: block;
+}
+
+/* ===== DESKTOP NAV ===== */
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+.nav-links a:hover {
+  color: #1f4fd8;
+}
+
+/* ===== MOBILE TOGGLE ===== */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+    @media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .logo img {
+    height: 34px;   /* mobile sharp */
+  }
+}
   </style>
 </head>
 
@@ -605,30 +666,35 @@
 <header class="site-header">
   <div class="header-inner">
 
-    <!-- LOGO -->
+    <!-- Logo -->
     <div class="logo">
-  <img src="logo.png" alt="ChoiceMentor logo" class="logo-img">
+      <img src="logo.png" alt="ChoiceMentor Logo">
     </div>
 
-    <nav class="nav-desktop">
-  <a href="#" class="active">Home</a>
-  <a href="#">Reviews</a>
-  <a href="#">Guides</a>
-  <a href="#">About</a>
-</nav>
+    <!-- Desktop Navigation -->
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#best-picks">Best Picks</a>
+      <a href="#comparisons">Comparisons</a>
+      <a href="#how-we-review">How We Review</a>
+      <a href="#about">About</a>
+    </nav>
 
-    <!-- MOBILE MENU ICON -->
-    <div class="menu-toggle">&#9776;</div>
+    <!-- Mobile Menu Button -->
+    <div class="menu-toggle" id="menuToggle">
+      ☰
+    </div>
 
   </div>
-  <!-- MOBILE MENU -->
-<nav class="nav-mobile">
-  <a href="#">Home</a>
-  <a href="#">Reviews</a>
-  <a href="#">Guides</a>
-  <a href="#">About</a>
-</nav>
-  
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="#best-picks">Best Picks</a>
+    <a href="#comparisons">Comparisons</a>
+    <a href="#how-we-review">How We Review</a>
+    <a href="#about">About</a>
+  </div>
 </header>
 
 <section class="hero">
