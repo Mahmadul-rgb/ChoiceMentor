@@ -670,6 +670,62 @@
 .nav-mobile a:active {
   background: #f1f5f9;
 }
+    
+.site-header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+    /* ===== STEP 2: DESKTOP NAV POLISH ===== */
+.nav-desktop a {
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0f172a;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-desktop a:hover {
+  background: #f1f5f9;
+  color: #2563eb;
+}
+
+/* Active link feel */
+.nav-desktop a.active {
+  background: #eaf0ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+    /* ===== STEP 3: HEADER DEPTH & STABILITY ===== */
+.site-header {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.header-inner {
+  min-height: 64px;
+}
+    /* ===== STEP 4A: DESKTOP NAV WEIGHT ===== */
+.nav-desktop a {
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.nav-desktop a:hover {
+  background: #f1f5f9;
+}
+    /* ===== FIX: MOBILE MENU SEPARATOR ===== */
+.nav-mobile {
+  border-top: 1px solid #eee;
+}
+    /* ===== FIX: DESKTOP ACTIVE NAV (ANCHOR FEEL) ===== */
+.nav-desktop a.active {
+  background: #e8f0ff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
   
   </style>
 </head>
