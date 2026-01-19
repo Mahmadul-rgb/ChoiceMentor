@@ -110,6 +110,9 @@
   font-size: 15px;
    border-bottom: 1px solid rgba(0,0,0,0.06);
 }
+    .nav-mobile a:active {
+  background: #f1f5f9;
+}
 
 .nav-mobile.active {
   display: flex;
@@ -843,6 +846,20 @@ Independent buying guides based on research, real use cases, and buyer needs.
     mobileMenu.classList.remove('active');
   });
   </script>
+  <script>
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".nav-mobile a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+    });
+  });
+</script>
   
 </body>
 </html>
