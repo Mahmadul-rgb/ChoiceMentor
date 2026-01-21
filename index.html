@@ -576,7 +576,7 @@ body.menu-open {
     </div>
   </footer>
 
-  <script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('mobileToggle');
   const menu = document.getElementById('mobileMenu');
@@ -593,6 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
   toggle.addEventListener('click', (e) => {
     e.stopPropagation();
     menu.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
 
     if (menu.classList.contains('active')) {
       bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
@@ -607,6 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
       menu.classList.remove('active');
+      document.body.classList.remove('menu-open');
       resetBars();
     });
   });
@@ -615,6 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (e) => {
     if (!toggle.contains(e.target) && !menu.contains(e.target)) {
       menu.classList.remove('active');
+      document.body.classList.remove('menu-open');
       resetBars();
     }
   });
