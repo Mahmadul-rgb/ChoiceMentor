@@ -401,6 +401,11 @@
         padding: 0 15px;
       }
     }
+    /* Lock background scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+  height: 100vh;
+}
   </style>
 </head>
 
@@ -604,6 +609,16 @@
         }
       });
     });
+    // Close mobile menu when a link is clicked
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
+
+mobileLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  });
+});
+    
   </script>
 </body>
 
