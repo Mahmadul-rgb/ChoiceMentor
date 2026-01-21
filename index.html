@@ -190,21 +190,16 @@
 
 .mobile-menu a {
   display: block;
-  padding: 16px 20px;
-  font-weight: 600;
-  border-bottom: 1px solid #f1f5f9;
-}
-    .mobile-menu a {
+  padding: 18px 20px;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.2px;
-    }
-    .mobile-menu a:active {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.mobile-menu a:active {
   background: #f1f5f9;
-    }
-    .mobile-menu a {
-  padding: 18px 20px;
-    }
+}
 
     /* =========================================
            3. HERO SECTION
@@ -611,9 +606,9 @@ body.menu-open {
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('mobileToggle');
   const menu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('menuOverlay');
   const bars = toggle.querySelectorAll('.bar');
   const mobileLinks = document.querySelectorAll('.mobile-menu a');
-  const overlay = document.getElementById('menuOverlay');
 
   function resetBars() {
     bars[0].style.transform = 'none';
@@ -621,14 +616,22 @@ document.addEventListener('DOMContentLoaded', () => {
     bars[2].style.transform = 'none';
   }
 
-  // Toggle menu
+  function closeMenu() {
+    menu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    resetBars();
+  }
+
+  // Toggle menu (☰ click)
   toggle.addEventListener('click', (e) => {
     e.stopPropagation();
-    menu.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
-    overlay.classList.toggle('active');
 
-    if (menu.classList.contains('active')) {
+    const isOpen = menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+
+    if (isOpen) {
       bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
       bars[1].style.opacity = '0';
       bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
@@ -637,24 +640,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Close menu when clicking a link
+  // Close menu when a link is clicked
   mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('active');
-      document.body.classList.remove('menu-open');
-      overlay.classList.remove('active');
-      resetBars();
-    });
+    link.addEventListener('click', closeMenu);
   });
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.remove('active');
-      document.body.classList.remove('menu-open');
-      resetBars();
-    }
-  });
+  // Close menu when overlay is clicked
+  overlay.addEventListener('click', closeMenu);
 });
 </script>
         
