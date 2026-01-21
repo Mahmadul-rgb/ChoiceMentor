@@ -577,49 +577,50 @@ body.menu-open {
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.getElementById('mobileToggle');
-      const menu = document.getElementById('mobileMenu');
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('mobileToggle');
+  const menu = document.getElementById('mobileMenu');
+  const bars = toggle.querySelectorAll('.bar');
+  const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
-      toggle.addEventListener('click', () => {
-        // Toggle active class on menu
-        menu.classList.toggle('active');
+  function resetBars() {
+    bars[0].style.transform = 'none';
+    bars[1].style.opacity = '1';
+    bars[2].style.transform = 'none';
+  }
 
-        // Optional: Animate hamburger bars
-        const bars = toggle.querySelectorAll('.bar');
-        if (menu.classList.contains('active')) {
-          bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-          bars[1].style.opacity = '0';
-          bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-        } else {
-          bars[0].style.transform = 'none';
-          bars[1].style.opacity = '1';
-          bars[2].style.transform = 'none';
-        }
-      });
+  // Toggle menu
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.classList.toggle('active');
 
-      // Close menu when clicking outside (UX best practice)
-      document.addEventListener('click', (e) => {
-        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-          menu.classList.remove('active');
-          const bars = toggle.querySelectorAll('.bar');
-          bars[0].style.transform = 'none';
-          bars[1].style.opacity = '1';
-          bars[2].style.transform = 'none';
-        }
-      });
+    if (menu.classList.contains('active')) {
+      bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+      bars[1].style.opacity = '0';
+      bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+    } else {
+      resetBars();
+    }
+  });
+
+  // Close menu when clicking a link
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('active');
+      resetBars();
     });
-    // Close mobile menu when a link is clicked
-const mobileLinks = document.querySelectorAll('.mobile-menu a');
+  });
 
-mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    menu.classList.remove('active');
-    document.body.classList.remove('menu-open');
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('active');
+      resetBars();
+    }
   });
 });
-    
-  </script>
+</script>
+        
 </body>
 
 </html>
