@@ -470,6 +470,16 @@ body.menu-open .mobile-toggle {
   height: calc(100vh - var(--header-height));
   overflow-y: auto;
     }
+    .menu-close {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 6000;
+    }
   </style>
 </head>
 
@@ -502,6 +512,7 @@ body.menu-open .mobile-toggle {
   </header>
 
   <nav class="mobile-menu" id="mobileMenu">
+      <button class="menu-close" aria-label="Close menu">✕</button>
     <a href="#">Home</a>
     <a href="#">Best Picks</a>
     <a href="#">Comparisons</a>
@@ -645,51 +656,25 @@ body.menu-open .mobile-toggle {
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('mobileToggle');
   const menu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('menuOverlay');
-  const bars = toggle.querySelectorAll('.bar');
-  const mobileLinks = document.querySelectorAll('.mobile-menu a');
+  const closeBtn = document.querySelector('.menu-close');
+  const links = menu.querySelectorAll('a');
 
-  function resetBars() {
-    bars[0].style.transform = 'none';
-    bars[1].style.opacity = '1';
-    bars[2].style.transform = 'none';
+  function openMenu() {
+    menu.classList.add('active');
+    document.body.classList.add('menu-open');
   }
 
   function closeMenu() {
     menu.classList.remove('active');
-    overlay.classList.remove('active');
     document.body.classList.remove('menu-open');
-    resetBars();
   }
 
-  // Toggle menu (☰ click)
-toggle.addEventListener('click', (e) => {
-  e.stopPropagation();
+  toggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
 
-  const isOpen = menu.classList.toggle('active');
-  overlay.classList.toggle('active');
-  document.body.classList.toggle('menu-open');
-
-  // ✅ Accessibility + correct mental model
-  if (isOpen) {
-    toggle.setAttribute('aria-label', 'Close Menu');
-
-    bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-    bars[1].style.opacity = '0';
-    bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-  } else {
-    toggle.setAttribute('aria-label', 'Open Menu');
-    resetBars();
-  }
-});
-
-  // Close menu when a link is clicked
-  mobileLinks.forEach(link => {
+  links.forEach(link => {
     link.addEventListener('click', closeMenu);
   });
-
-  // Close menu when overlay is clicked
-  overlay.addEventListener('click', closeMenu);
 });
 </script>
         
