@@ -431,6 +431,25 @@ body.menu-open {
   opacity: 1;
   pointer-events: all;
 }
+    /* Keep header always visible when menu is open */
+body.menu-open header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3000;
+}
+    body.menu-open header {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+body.menu-open .logo {
+  color: #e5e7eb;
+}
+
+body.menu-open .logo span {
+  color: #93c5fd;
+}
   </style>
 </head>
 
