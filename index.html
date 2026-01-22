@@ -450,6 +450,26 @@ body.menu-open .logo {
 body.menu-open .logo span {
   color: #93c5fd;
 }
+    /* Keep header always visible when menu is open */
+body.menu-open header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3000;
+}
+    /* Make close button always visible */
+body.menu-open .mobile-toggle {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 4000;
+}
+    .mobile-menu {
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+    }
   </style>
 </head>
 
@@ -643,21 +663,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Toggle menu (☰ click)
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
+toggle.addEventListener('click', (e) => {
+  e.stopPropagation();
 
-    const isOpen = menu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
+  const isOpen = menu.classList.toggle('active');
+  overlay.classList.toggle('active');
+  document.body.classList.toggle('menu-open');
 
-    if (isOpen) {
-      bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-      bars[1].style.opacity = '0';
-      bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-    } else {
-      resetBars();
-    }
-  });
+  // ✅ Accessibility + correct mental model
+  if (isOpen) {
+    toggle.setAttribute('aria-label', 'Close Menu');
+
+    bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+    bars[1].style.opacity = '0';
+    bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+  } else {
+    toggle.setAttribute('aria-label', 'Open Menu');
+    resetBars();
+  }
+});
 
   // Close menu when a link is clicked
   mobileLinks.forEach(link => {
